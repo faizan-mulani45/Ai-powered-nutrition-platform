@@ -1,0 +1,92 @@
+.stepbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  row-gap: 16px;
+}
+
+.stepbar__item {
+  display: flex;
+  align-items: center;
+}
+
+.stepbar__line {
+  width: 48px;
+  height: 1px;
+  margin: 0 4px;
+  flex-shrink: 0;
+  transition: background 0.4s var(--ease-out);
+}
+.stepbar__line--filled { background: var(--cardamom-mid); }
+.stepbar__line--empty  { background: var(--border-subtle); }
+
+.stepbar__node-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stepbar__node {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-ui);
+  transition: all 0.3s var(--ease-out);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.stepbar__node--pending {
+  border: 2px solid var(--border-subtle);
+  color: var(--text-faint);
+  background: var(--surface-1);
+}
+
+.stepbar__node--active {
+  background: linear-gradient(135deg, var(--saffron), #c04008);
+  color: #fff;
+  border: none;
+  box-shadow:
+    0 0 0 3px rgba(232,87,10,0.12),
+    0 0 20px rgba(232,87,10,0.35);
+  animation: pulse-node 2s ease-in-out infinite;
+}
+
+@keyframes pulse-node {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(232,87,10,0.12), 0 0 20px rgba(232,87,10,0.35); }
+  50%       { box-shadow: 0 0 0 6px rgba(232,87,10,0.06), 0 0 28px rgba(232,87,10,0.45); }
+}
+
+.stepbar__node--done {
+  background: var(--cardamom);
+  border: 1px solid #4a7a24;
+  color: var(--mint);
+}
+
+.stepbar__label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.stepbar__label--pending { color: var(--text-faint); }
+.stepbar__label--active  { color: var(--turmeric-light); }
+.stepbar__label--done    { color: var(--mint); }
+
+@media (max-width: 600px) {
+  .stepbar__line { width: 20px; }
+  .stepbar__label { display: none; }
+  .stepbar { gap: 4px; }
+}

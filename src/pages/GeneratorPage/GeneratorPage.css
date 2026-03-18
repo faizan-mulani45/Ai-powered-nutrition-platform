@@ -1,0 +1,250 @@
+.gen-page {
+  padding: var(--space-12) 0 var(--space-20);
+  min-height: 100vh;
+}
+
+/* ─── PAGE HEADER ─────────────────────────────────────────────────────────── */
+.gen-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.gen-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+.gen-header__sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ─── STEP WRAPPER ────────────────────────────────────────────────────────── */
+.gen-step {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: pageEnter 0.4s var(--ease-out);
+}
+
+/* ─── FOOTER BUTTONS ──────────────────────────────────────────────────────── */
+.gen-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 8px;
+}
+.gen-footer--results {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ─── MODE SELECTOR ───────────────────────────────────────────────────────── */
+.gen-modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.gen-mode-card {
+  position: relative;
+  background: var(--surface-1);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-xl);
+  padding: 28px 22px;
+  cursor: pointer;
+  transition: all var(--dur-med) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+.gen-mode-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--saffron), var(--turmeric));
+  transform: scaleX(0);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.gen-mode-card:hover {
+  border-color: var(--border-med);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.gen-mode-card--active {
+  border-color: var(--saffron);
+  background: linear-gradient(135deg, rgba(232,87,10,0.08), rgba(212,148,26,0.04));
+  box-shadow: 0 0 32px rgba(232,87,10,0.1);
+}
+.gen-mode-card--active::before { transform: scaleX(1); }
+
+.gen-mode-card__check {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 22px; height: 22px;
+  background: var(--saffron);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.gen-mode-card__icon  { font-size: 32px; line-height: 1; }
+.gen-mode-card__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.gen-mode-card__desc  {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─── GRIDS ───────────────────────────────────────────────────────────────── */
+.gen-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.gen-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+/* ─── LIVE PREVIEW ────────────────────────────────────────────────────────── */
+.gen-live-preview {
+  margin-top: 20px;
+  background: var(--surface-3);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 16px 20px;
+}
+.gen-live-preview__label {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.gen-live-stats {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.gen-live-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 24px;
+}
+.gen-live-stat:first-child { padding-left: 0; }
+.gen-live-stat__val {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--turmeric-light);
+  line-height: 1;
+}
+.gen-live-stat__sub {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: var(--font-ui);
+}
+.gen-live-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* ─── SECTION GROUPS ──────────────────────────────────────────────────────── */
+.gen-section { margin-bottom: 24px; }
+.gen-section:last-child { margin-bottom: 0; }
+.gen-section__label {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* ─── WORK TYPE GRID ──────────────────────────────────────────────────────── */
+.gen-work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gen-work-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.gen-work-card:hover {
+  border-color: var(--border-med);
+  background: var(--surface-3);
+}
+.gen-work-card--active {
+  background: linear-gradient(135deg, rgba(232,87,10,0.12), rgba(212,148,26,0.07));
+  border-color: var(--saffron);
+  box-shadow: 0 0 16px rgba(232,87,10,0.08);
+}
+.gen-work-card__icon { font-size: 22px; margin-bottom: 8px; line-height: 1; }
+.gen-work-card__name {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.gen-work-card__desc { font-size: 11px; color: var(--text-faint); line-height: 1.4; }
+
+/* ─── RESULTS METRICS GRID ────────────────────────────────────────────────── */
+.gen-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+/* ─── MACROS ──────────────────────────────────────────────────────────────── */
+.gen-macros-card { }
+.gen-macros {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ─── PLAN CARD ───────────────────────────────────────────────────────────── */
+.gen-plan-card { }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .gen-grid-2,
+  .gen-grid-3  { grid-template-columns: 1fr 1fr; }
+  .gen-modes   { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .gen-metrics { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 500px) {
+  .gen-grid-2,
+  .gen-grid-3  { grid-template-columns: 1fr; }
+  .gen-metrics { grid-template-columns: 1fr 1fr; }
+  .gen-live-stats { gap: 12px; flex-direction: column; align-items: flex-start; }
+  .gen-live-divider { width: 40px; height: 1px; }
+  .gen-live-stat { padding: 0; }
+}

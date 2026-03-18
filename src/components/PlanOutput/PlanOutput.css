@@ -1,0 +1,262 @@
+/* ─── LOADING STATE ──────────────────────────────────────────────────────── */
+.plan-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 60px 20px;
+  text-align: center;
+}
+.plan-loading__spinner { /* just wraps the spinner */ }
+.plan-loading__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.plan-loading__sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 380px;
+  margin: 0 auto;
+}
+.plan-loading__dots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+.plan-loading__dot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-faint);
+  font-family: var(--font-ui);
+  opacity: 0;
+  animation: fadeUp 0.5s var(--ease-out) forwards;
+}
+.plan-loading__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--saffron);
+  flex-shrink: 0;
+  animation: blink 1.2s ease-in-out infinite;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+
+/* ─── PLAN OUTPUT ────────────────────────────────────────────────────────── */
+.plan-output {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: pageEnter 0.5s var(--ease-out);
+}
+
+/* ─── DAY SECTION ────────────────────────────────────────────────────────── */
+.plan-day {
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.plan-day__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 24px;
+  background: linear-gradient(135deg, rgba(232,87,10,0.08), rgba(212,148,26,0.04));
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+}
+
+.plan-day__badge {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  background: linear-gradient(135deg, rgba(232,87,10,0.2), rgba(212,148,26,0.15));
+  border: 1px solid rgba(232,87,10,0.3);
+  color: var(--turmeric-light);
+  white-space: nowrap;
+}
+
+.plan-day__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.plan-day__total {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: var(--font-ui);
+  background: var(--surface-3);
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ─── MEALS ──────────────────────────────────────────────────────────────── */
+.plan-meals {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-meal {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--meal-bg, transparent);
+  border-left: 3px solid var(--meal-border, transparent);
+  transition: background var(--dur-fast);
+}
+.plan-meal:last-child { border-bottom: none; }
+.plan-meal:hover { background: var(--surface-3); }
+
+.plan-meal__time {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  width: 140px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  line-height: 1.3;
+}
+
+.plan-meal__content {
+  flex: 1;
+  min-width: 0;
+}
+.plan-meal__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+.plan-meal__desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+
+.plan-meal__kcal {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--saffron-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 16px;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+/* ─── SECTION (exercise / tips / medical) ────────────────────────────────── */
+.plan-section {
+  border-radius: var(--r-xl);
+  padding: 24px;
+  border: 1px solid;
+}
+
+.plan-section--exercise {
+  background: linear-gradient(135deg, rgba(30,58,15,0.3), rgba(30,58,15,0.15));
+  border-color: rgba(74,122,36,0.3);
+}
+.plan-section--tips {
+  background: linear-gradient(135deg, rgba(232,87,10,0.06), rgba(212,148,26,0.04));
+  border-color: var(--border-soft);
+}
+.plan-section--medical {
+  background: linear-gradient(135deg, rgba(139,26,26,0.15), rgba(139,26,26,0.08));
+  border-color: rgba(139,26,26,0.3);
+}
+
+.plan-section__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.plan-section__icon { font-size: 20px; line-height: 1; }
+.plan-section__title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.plan-section__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.plan-section__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.plan-section__bullet {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.plan-section__bullet--green {
+  width: 7px; height: 7px;
+  background: var(--mint);
+  border-radius: 50%;
+  margin-top: 7px;
+}
+.plan-section__bullet--saffron {
+  color: var(--saffron-light);
+  font-size: 10px;
+  margin-top: 5px;
+}
+.plan-section__bullet--red {
+  width: 7px; height: 7px;
+  background: #fca5a5;
+  border-radius: 50%;
+  margin-top: 7px;
+}
+
+/* ─── PLAIN TEXT ─────────────────────────────────────────────────────────── */
+.plan-plain {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .plan-meal {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .plan-meal__time { width: auto; }
+  .plan-meal__kcal { margin-left: 0; }
+  .plan-day__header { padding: 14px 16px; }
+  .plan-meals .plan-meal { padding: 12px 16px; }
+}
